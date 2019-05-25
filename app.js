@@ -10,8 +10,12 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
 mongoose.connect(process.env.DATABASEURL, {
-  useNewUrlParser: true,
-  useCreateIndex: true
+    useNewUrlParser: true,
+    useCreateIndex: true
+}).then(() => {
+    console.log("Connected to DB!");
+}).catch(err => {
+    console.log("ERROR:", err.message);
 });
 
 // S C H E M A S
